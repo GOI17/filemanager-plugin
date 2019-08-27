@@ -7,7 +7,7 @@
 
 /*
 Plugin Name: Frontend Files
-Plugin URI: 
+Plugin URI: https://github.com/GOI17/filemanager-plugin
 Description: Front End file manager
 Version: 1.0.0
 Author: Gilberto Olivas
