@@ -1,0 +1,17 @@
+{
+  "name": "gilbe/frontend-files",
+  "type": "project",
+  "authors": [
+    {
+      "name": "GOI17",
+      "email": "chivas-gilbert@hotmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Inc\\": "./inc"
+    }
+  }
+}
