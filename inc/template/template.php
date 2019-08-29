@@ -6,15 +6,16 @@
 
 class Template {
 
-    protected static $table;
-
-    protected static $rows;
-
     public static function read_folder_url( $dir ) {
 
-        echo '<div class="table-resposive"><table class="table table-hover table-bordered">';
+        echo '<div id="file-manager"><table>';
 
-        echo '<thead><th scope="col">Name</th></thead><tbody>';
+        echo "<thead>
+                <th>
+                    <h3>$dir Directory</h3>
+                </th>
+            </thead>
+            <tbody>";
 
         self::create_file_manager( $dir );
 
@@ -32,9 +33,18 @@ class Template {
 
             if ( $name == '.' || $name == '..') continue;
 
-            echo '<tr><td>';
+            echo '<tr>
+                    <td>';
             
-            echo $name;
+            if ( is_dir( $cleanPath . $name) ) 
+                echo "<p id='folder'>
+                        $name Folder
+                    </p>";
+            
+            if ( is_file( $cleanPath . $name) ) 
+                echo "<p>
+                        $name
+                    </p>";
 
             if ( is_dir( $cleanPath . $name ) && is_readable( $cleanPath . $name ) ) {
 
@@ -44,8 +54,10 @@ class Template {
 
             }
 
-            echo '</td></tr>';
-
+            echo '</td>';
+            
+            echo '</tr>';
+            
         }
         
     }

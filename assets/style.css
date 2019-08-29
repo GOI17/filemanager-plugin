@@ -1,0 +1,24 @@
+#file-manager table {
+  border: 2px solid #f0f0f0;
+}
+
+#file-manager table thead {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+#file-manager table thead h3 {
+  margin: 5px;
+}
+
+#file-manager table tbody tr {
+  border-bottom: 2px solid #f0f0f0;
+}
+
+#file-manager table tbody tr td p {
+  margin: 10px 0 0 10px;
+}
+
+#file-manager table tbody tr td #folder {
+  font-weight: bold;
+  margin: 10px 0 0 10px;
+}
