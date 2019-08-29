@@ -17,9 +17,18 @@ Text Domain: frontend-files
 
 defined( 'ABSPATH' ) or die( 'Hey, what are you doing here?' );
 
-if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php') ) {
+if ( file_exists( dirname( __FILE__ ) . '/inc/base/activate.php' ) && 
+     file_exists( dirname( __FILE__ ) . '/inc/base/deactivate.php' ) && 
+     file_exists( dirname( __FILE__ ) . '/inc/init.php' ) &&
+     file_exists( dirname( __FILE__ ) . '/inc/template/template.php' ) ) {
 
-    require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+    require_once dirname( __FILE__ ) . '/inc/base/activate.php';
+    
+    require_once dirname( __FILE__ ) . '/inc/base/deactivate.php';
+
+    require_once dirname( __FILE__ ) . '/inc/init.php';
+
+    require_once dirname( __FILE__ ) . '/inc/template/template.php';
 
 }
 
@@ -33,15 +42,19 @@ define( 'ROOT_DIRECTORY', 'wp-content' );
 
 function activate_frontendfiles() {
 
-    Inc\Base\Activate::activate();
+    $activate = new Activate;
+
+    $activate->activate();
     
 }
 
 register_activation_hook( __FILE__, 'activate_frontendfiles');
 
 function deactivate_frontendfiles() {
-    
-    Inc\Base\Deactivate::deactivate();
+
+    $activate = new Deactivate;
+
+    $activate->deactivate();
     
 }
 
@@ -49,13 +62,13 @@ register_deactivation_hook( __FILE__, 'deactivate_frontendfiles');
 
 if ( class_exists( 'Inc\\Init' ) ) {
     
-    Inc\Init::register_services();
+    Init::register_services();
     
 }
 
 function load_view() {
     
-    return Inc\Template\Template::create_file_manager();
+    return Template::read_folder_url("firmware");
      
 }
 

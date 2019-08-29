@@ -5,14 +5,18 @@
  * 
 */
 
-namespace Inc;
+// if ( file_exists( dirname( PLUGIN_URL ) . '/inc/base/enqueue.php' ) ) {
+
+    require_once 'base/enqueue.php';
+
+// }
 
 final class Init {
 
     public static function get_services() {
 
         return [
-            Base\Enqueue::class
+            Enqueue::class
         ];
 
     }
